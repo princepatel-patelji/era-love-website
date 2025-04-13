@@ -2,25 +2,101 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Era Love Website</title>
+    <title>Era's Love Story</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background: url('https://images.unsplash.com/photo-1501785888041-af3ef285b470?ixlib=rb-4.0.3&auto=format&fit=crop&w=1350&q=80') no-repeat center center fixed;
+            background-size: cover;
+            color: #fff;
+            text-align: center;
+            overflow-x: hidden;
+        }
+        .container {
+            padding: 50px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 15px;
+            margin: 50px auto;
+            max-width: 800px;
+        }
+        h1 {
+            font-size: 3em;
+            color: #ff6f61;
+            text-shadow: 2px 2px 4px #000;
+        }
+        .image-gallery img {
+            max-width: 300px;
+            margin: 10px;
+            border: 5px solid #ff6f61;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 111, 97, 0.5);
+        }
+        .song-links a {
+            color: #ff6f61;
+            font-size: 1.2em;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+        }
+        .song-links a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+        .rain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .drop {
+            position: absolute;
+            bottom: 100%;
+            width: 2px;
+            height: 15px;
+            background: rgba(255, 255, 255, 0.5);
+            animation: fall linear infinite;
+        }
+        @keyframes fall {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(100vh); }
+        }
+        @media (max-width: 600px) {
+            .container { padding: 20px; }
+            h1 { font-size: 2em; }
+            .image-gallery img { max-width: 200px; }
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to Era's Love Website</h1>
-    <!-- Upload Form -->
-    <form method="post" enctype="multipart/form-data">
-        <input type="file" name="file" accept="image/*">
-        <input type="submit" value="Upload Photo">
-    </form>
-    <!-- Display Uploaded Photos (Static for Now) -->
-    <h2>Uploaded Photos</h2>
-    <div>
-        <!-- Photos will appear here after upload -->
+    <!-- Rain Effect -->
+    <div class="rain">
+        {% for i in range(50) %}
+            <div class="drop" style="left: {{ i * 2 }}%; animation-duration: {{ 1 + i * 0.1 }}s;"></div>
+        {% endfor %}
     </div>
-    <!-- Song Links -->
-    <h2>Song Links</h2>
-    <ul>
-        <li><a href="https://www.youtube.com/watch?v=dQw4w9WgXcQ" target="_blank">Song 1 - Never Gonna Give You Up</a></li>
-        <li><a href="https://www.youtube.com/watch?v=YZ8A3nclm5M" target="_blank">Song 2 - Sweet Child O' Mine</a></li>
-    </ul>
+
+    <div class="container">
+        <h1>Era's Love Journey 🌧️❤️</h1>
+        <p style="font-size: 1.2em;">A beautiful story of love in the rain...</p>
+
+        <!-- Image Gallery -->
+        <div class="image-gallery">
+            <img src="https://images.unsplash.com/photo-1503924136-6e8c1be98e8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Hand-holding couple">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Hugging couple">
+            <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Kissing couple">
+        </div>
+
+        <!-- Hindi Romantic Song Links -->
+        <div class="song-links">
+            <h2>Romantic Songs 🎶</h2>
+            <a href="https://www.youtube.com/watch?v=UkzXh3Q8O6w" target="_blank">Tum Hi Ho</a> |
+            <a href="https://www.youtube.com/watch?v=0yq6qK0vgh0" target="_blank">Channa Mereya</a> |
+            <a href="https://www.youtube.com/watch?v=3j8n9hQhY3g" target="_blank">Gerua</a>
+        </div>
+    </div>
 </body>
 </html>
