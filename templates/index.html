@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prince & Era</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Parisienne&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background: url('https://source.unsplash.com/1920x1080/?love,romance') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: auto;
+        }
+        .content {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            width: 90%;
+            max-width: 600px;
+            text-align: center;
+        }
+        .hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: red;
+            transform: rotate(-45deg);
+            animation: fall 5s infinite;
+        }
+        @keyframes fall {
+            0% { top: -10%; opacity: 0; }
+            10% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div class="hearts"></div>
+    <script>
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.className = 'heart';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+            document.querySelector('.hearts').appendChild(heart);
+            setTimeout(() => heart.remove(), 5000);
+        }
+        setInterval(createHeart, 300);
+    </script>
+
+    <div class="content">
+        <h1 class="text-4xl font-bold text-pink-600 parisienne">To My Dearest {{ name }}</h1>
+        <p class="text-lg mt-4">From your loving {{ partner }}</p>
+        <nav class="mt-6">
+            <a href="/" class="text-pink-500 hover:text-pink-700 mx-2">Home</a> |
+            <a href="/timeline" class="text-pink-500 hover:text-pink-700 mx-2">Our Story</a> |
+            <a href="/gallery" class="text-pink-500 hover:text-pink-700 mx-2">Memories</a> |
+            <a href="/letter" class="text-pink-500 hover:text-pink-700 mx-2">Love Letter</a> |
+            <a href="/confession" class="text-pink-500 hover:text-pink-700 mx-2">Confess</a> |
+            <a href="/music" class="text-pink-500 hover:text-pink-700 mx-2">Our Songs</a>
+        </nav>
+    </div>
+
+    <footer class="bg-pink-600 text-white py-10 mt-10">
+        <div class="container mx-auto px-6 text-center">
+            <p class="parisienne text-2xl">Made with ❤️ for Era by Prince</p>
+            <p class="mt-2">© {{ year }} All Rights Reserved</p>
+        </div>
+    </footer>
+</body>
+</html>
