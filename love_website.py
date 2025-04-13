@@ -1,59 +1,34 @@
-from flask import Flask, render_template, request, jsonify
-from datetime import datetime
+from flask import Flask, render_template, request, redirect, url_for, send_from_directory
+from werkzeug.utils import secure_filename
+import os
 
 app = Flask(__name__)
 
-# Mock data for timeline and gallery
-relationship_timeline = [
-    {"date": "2023-06-15", "event": "Our first date at the cozy café!", "description": "Prince and Era shared a magical evening with coffee and laughter."},
-    {"date": "2023-12-25", "event": "Christmas under the stars", "description": "We exchanged gifts and danced in the moonlight."},
-    {"date": "2024-07-01", "event": "One-year anniversary", "description": "A romantic getaway to celebrate our love!"},
-]
+UPLOAD_FOLDER = 'static/uploads'
+ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
+app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 
-gallery_images = [
-    {"url": "https://source.unsplash.com/300x200/?couple", "caption": "Us smiling together"},
-    {"url": "https://source.unsplash.com/300x200/?love", "caption": "Holding hands forever"},
-    {"url": "https://source.unsplash.com/300x200/?romance", "caption": "Our favorite sunset"},
-]
+def allowed_file(filename):
+    return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-confessions = []
-
-@app.route('/')
-def home():
-    current_year = datetime.now().year
-    return render_template('index.html', name="Era Pandey", partner="Prince Patel", year=current_year)
-
-@app.route('/timeline')
-def timeline():
-    return render_template('timeline.html', timeline=relationship_timeline)
-
-@app.route('/gallery')
-def gallery():
-    return render_template('gallery.html', images=gallery_images)
-
-@app.route('/letter')
-def letter():
-    return render_template('letter.html')
-
-@app.route('/confession', methods=['GET', 'POST'])
-def confession():
+@app.route('/', methods=['GET', 'POST'])
+def upload_file():
     if request.method == 'POST':
-        message = request.form.get('message')
-        if message:
-            confessions.append({
-                'message': message,
-                'date': datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-            })
-        return jsonify({'status': 'success'})
-    return render_template('confession.html', confessions=confessions)
+        if 'file' not in request.files:
+            return redirect(request.url)
+        file = request.files['file']
+        if file.filename == '' or not allowed_file(file.filename):
+            return redirect(request.url)
+        filename = secure_filename(file.filename)
+        if not os.path.exists(UPLOAD_FOLDER):
+            os.makedirs(UPLOAD_FOLDER)
+        file.save(os.path.join(UPLOAD_FOLDER, filename))
+        return redirect(url_for('upload_file'))
+    return render_template('index.html')
 
-@app.route('/music')
-def music():
-    songs = [
-        {"title": "Perfect", "artist": "Ed Sheeran", "url": "https://www.kozco.com/tech/piano2-Audacity1.2.5.mp3"},
-        {"title": "Love Story", "artist": "Taylor Swift", "url": "https://www.kozco.com/tech/LRMonoPhase4.mp3"},
-    ]
-    return render_template('music.html', songs=songs)
+@app.route('/uploads/<filename>')
+def uploaded_file(filename):
+    return send_from_directory(UPLOAD_FOLDER, filename)
 
 if __name__ == '__main__':
     app.run(debug=True)
