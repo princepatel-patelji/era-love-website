@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Era's Love Paradise ❤️</title>
+    <title>{{ name }} & {{ partner }}'s Love ❤️</title>
     <style>
         body {
             margin: 0;
@@ -11,92 +11,59 @@
             background-size: cover;
             color: #fff;
             text-align: center;
-            overflow-x: hidden;
         }
         .container {
             padding: 30px;
             background: rgba(0, 0, 0, 0.7);
             border-radius: 15px;
             margin: 40px auto;
-            max-width: 900px;
-            box-shadow: 0 0 20px rgba(255, 182, 193, 0.7);
+            max-width: 800px;
+            box-shadow: 0 0 15px rgba(255, 182, 193, 0.8);
         }
         h1 {
             font-size: 2.5em;
             color: #ff69b4;
-            text-shadow: 2px 2px 6px #000;
+            text-shadow: 2px 2px 4px #000;
             animation: fadeIn 2s;
         }
         @keyframes fadeIn {
             from { opacity: 0; }
             to { opacity: 1; }
         }
-        .love-messages {
+        .love-messages p {
             font-size: 1.1em;
-            line-height: 1.6;
-            margin: 20px 0;
+            margin: 10px 0;
             color: #ffd1dc;
+            animation: slideUp 1s ease-out;
         }
-        .image-gallery img {
-            max-width: 250px;
-            margin: 10px;
-            border: 4px solid #ff69b4;
-            border-radius: 10px;
-            transition: transform 0.3s;
+        @keyframes slideUp {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
         }
-        .image-gallery img:hover {
-            transform: scale(1.1);
-        }
-        .song-links a {
+        a {
             color: #ff69b4;
-            font-size: 1.2em;
             text-decoration: none;
-            margin: 0 15px;
-            transition: color 0.3s;
+            margin: 0 10px;
         }
-        .song-links a:hover {
+        a:hover {
             color: #fff;
             text-decoration: underline;
         }
         @media (max-width: 600px) {
             .container { padding: 15px; margin: 20px; }
             h1 { font-size: 1.8em; }
-            .image-gallery img { max-width: 180px; }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Era's Love Paradise 🌹💕</h1>
+        <h1>{{ name }} & {{ partner }}'s Love Story - {{ year }}</h1>
         <div class="love-messages">
-            <p>You are the melody of my heart, Era! ❤️</p>
-            <p>Every raindrop reminds me of our love story. 🌧️</p>
-            <p>You’re my forever, my cute baby! 🍼💞</p>
-            <p>Hand in hand, we’ll dance through life. 🤝</p>
-            <p>Your hug is my safe haven, my love! 🤗</p>
-            <p>Every kiss from you lights up my world. 💋</p>
-            <p>Together, we’re a beautiful dream come true. 🌸</p>
+            {% for message in love_messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
         </div>
-
-        <!-- Image Gallery -->
-        <div class="image-gallery">
-            <img src="https://images.unsplash.com/photo-1503924136-6e8c1be98e8e?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Hand-holding couple">
-            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Hugging couple with baby">
-            <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Kissing couple">
-            <img src="https://images.unsplash.com/photo-1582389379232-8a36a3a8f9f6?ixlib=rb-4.0.3&auto=format&fit=crop&w=300&q=80" alt="Cute baby love">
-            <img src="/static/myhug.jpg" alt="My Hug">
-            <img src="/static/mykiss.png" alt="My Kiss">
-            <img src="/static/mybaby.jpg" alt="My Baby">
-        </div>
-
-        <!-- Hindi Romantic Song Links -->
-        <div class="song-links">
-            <h2>Love Songs 🎵</h2>
-            <a href="https://www.youtube.com/watch?v=UkzXh3Q8O6w" target="_blank">Tum Hi Ho</a> |
-            <a href="https://www.youtube.com/watch?v=0yq6qK0vgh0" target="_blank">Channa Mereya</a> |
-            <a href="https://www.youtube.com/watch?v=3j8n9hQhY3g" target="_blank">Gerua</a> |
-            <a href="https://www.youtube.com/watch?v=zwEu0T7ul8A" target="_blank">Tera Ban Jaunga</a>
-        </div>
+        <p>Explore our journey: <a href="/timeline">Timeline</a> | <a href="/gallery">Gallery</a> | <a href="/letter">Love Letter</a> | <a href="/confession">Confession</a> | <a href="/music">Music</a> | <a href="/our_story">Our Story</a></p>
     </div>
 </body>
 </html>
