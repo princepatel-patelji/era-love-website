@@ -67,3 +67,27 @@
     </div>
 </body>
 </html>
+<div style="position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 10; pointer-events: none;">
+    <div style="font-family: 'Parisienne', cursive; font-size: 4em; color: #ff69b4; text-shadow: 3px 3px 6px #ff1493, -3px -3px 6px #ffb6c1; animation: pulse 2s infinite;">
+        My Wife
+    </div>
+    <div style="font-family: 'Arial', sans-serif; font-size: 1.5em; color: #ff69b4; text-shadow: 2px 2px 4px #ff1493; animation: float 3s infinite;">
+        Era, My Forever Love ❤️
+    </div>
+</div>
+<style>
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.1); }
+        100% { transform: scale(1); }
+    }
+    @keyframes float {
+        0% { transform: translateY(0); }
+        50% { transform: translateY(-10px); }
+        100% { transform: translateY(0); }
+    }
+    @media (max-width: 600px) {
+        div[style*="font-size: 4em"] { font-size: 2.5em; }
+        div[style*="font-size: 1.5em"] { font-size: 1em; }
+    }
+</style>
