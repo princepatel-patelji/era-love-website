@@ -27,9 +27,12 @@ def music():
     return render_template('music.html')
 
 @app.route('/love')
-@app.route('/our_story')
 def love():
     return render_template('love.html')
+
+@app.route('/our_story')
+def our_story():
+    return render_template('our_story.html')
 
 @app.route('/love_card')
 def love_card():
