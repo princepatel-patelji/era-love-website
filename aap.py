@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html', name="Your Name", partner="Era", year=2025, love_messages=["We met...", "Our first date...", "Forever together..."])
+    return render_template('index.html', name="Prince", partner="Era", year=2025, love_messages=["We met...", "Our first date...", "Forever together..."])
 
 @app.route('/timeline')
 def timeline():
@@ -27,6 +27,7 @@ def music():
     return render_template('music.html')
 
 @app.route('/love')
+@app.route('/our_story')
 def love():
     return render_template('love.html')
 
