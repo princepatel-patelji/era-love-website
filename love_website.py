@@ -70,6 +70,14 @@ def music():
 def our_story():
     return render_template('our_story.html')
 
+@app.route('/love_card')
+def love_card():
+    return render_template('love_card.html')
+
+@app.route('/love')
+def love():
+    return render_template('love.html')
+
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))  # Render uses PORT environment variable
     app.run(host='0.0.0.0', port=port, debug=False)  # Debug=False for production
