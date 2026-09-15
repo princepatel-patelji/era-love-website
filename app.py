@@ -41,6 +41,17 @@ def love_card():
 @app.route('/romance')
 def romance():
     return render_template('romance.html')
+    @app.route('/happy_birthday')
+def happy_birthday():
+    return render_template('happy_birthday.html')
+
+@app.route('/happy_ji')
+def happy_ji():
+    return render_template('happy_ji.html')
+
+@app.route('/happy_ji_2')
+def happy_ji_2():
+    return render_template('happy_ji_2.html')
 
 if __name__ == '__main__':
     app.run(debug=True)
