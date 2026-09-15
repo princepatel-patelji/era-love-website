@@ -79,18 +79,17 @@ def love_card():
 @app.route('/love')
 def love():
     return render_template('love.html')
-    @app.route('/happy_birthday')
+@app.route('/happy_birthday')
 def happy_birthday():
     return render_template('happy_birthday.html')
 
 @app.route('/happy_ji')
 def happy_ji():
     return render_template('happy_ji.html')
-
 @app.route('/happy_ji_2')
 def happy_ji_2():
     return render_template('happy_ji_2.html')
-    @app.route('/romance')
+@app.route('/romance')
 def romance():
     return render_template('romance.html')
 
