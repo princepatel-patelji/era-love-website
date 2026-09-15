@@ -29,6 +29,8 @@ def home():
         "Your hug is my safe haven, my love! 🤗",
         "Every kiss from you lights up my world. 💋",
         "Together, we’re a beautiful dream come true. 🌸"
+        "You are Worthy Of abudance My Beta "
+        "You Open the Door all doors of uss.."
     ]
     return render_template('index.html', name="Era Pandey", partner="Prince Patel", year=current_year, love_messages=love_messages)
 
@@ -77,6 +79,22 @@ def love_card():
 @app.route('/love')
 def love():
     return render_template('love.html')
+    @app.route('/happy_birthday')
+def happy_birthday():
+    return render_template('happy_birthday.html')
+
+@app.route('/happy_ji')
+def happy_ji():
+    return render_template('happy_ji.html')
+
+@app.route('/happy_ji_2')
+def happy_ji_2():
+    return render_template('happy_ji_2.html')
+    @app.route('/romance')
+def romance():
+    return render_template('romance.html')
+
+
 
 if __name__ == '__main__':
     port = int(os.getenv('PORT', 5000))  # Render uses PORT environment variable
